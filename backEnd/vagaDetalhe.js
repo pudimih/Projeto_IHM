@@ -1,71 +1,68 @@
-// ===============================
-// PEGAR DADOS DA VAGA CLICADA
-// ===============================
-const vaga = JSON.parse(sessionStorage.getItem("vagaSelecionada"));
-
-document.getElementById("titulo-vaga").textContent = vaga.titulo;
-document.getElementById("empresa").textContent = vaga.empresa;
-document.getElementById("local").textContent = vaga.local;
-document.getElementById("area").textContent = vaga.area;
-document.getElementById("tipo").textContent = vaga.tipo;
-
-// Descrição fake por enquanto
-document.getElementById("descricao").textContent = vaga.descricao || 
-    "Descrição completa será adicionada depois.";
-
-
-// ===============================
-// POPUP CONFIRMAR CANDIDATURA
-// ===============================
-const popupBg = document.getElementById("popupBg");
+// Seletores
 const btnCandidatar = document.getElementById("btnCandidatar");
+const popupBg = document.getElementById("popupBg");
+const btnConfirmar = document.getElementById("btnConfirmarEnvio");
 const btnCancelar = document.getElementById("btnCancelarPopup");
-const btnConfirmarEnvio = document.getElementById("btnConfirmarEnvio");
 
+// Elementos do popup para preencher com dados
+const popupNome = document.getElementById("popupNome");
+const popupEmail = document.getElementById("popupEmail");
+const popupTelefone = document.getElementById("popupTelefone");
+const popupResumo = document.getElementById("popupResumo");
+const popupSkills = document.getElementById("popupSkills");
+const popupExperiencia = document.getElementById("popupExperiencia");
+const popupFormacao = document.getElementById("popupFormacao");
 
-// abrir popup
+// ===== Carregar dados da vaga clicada =====
+window.addEventListener("load", () => {
+    const vaga = JSON.parse(sessionStorage.getItem("vagaSelecionada")); // mudou para sessionStorage
+    if (!vaga) {
+        alert("Nenhuma vaga selecionada!");
+        window.location.href = "vagas.html";
+        return;
+    }
+
+    document.getElementById("titulo-vaga").textContent = vaga.titulo;
+    document.getElementById("empresa").textContent = vaga.empresa;
+    document.getElementById("local").textContent = vaga.local;
+    document.getElementById("area").textContent = vaga.area;
+    document.getElementById("tipo").textContent = vaga.tipo;
+    document.getElementById("descricao").textContent = vaga.descricao;
+});
+
+// ===== Botão Candidatar-se =====
 btnCandidatar.addEventListener("click", () => {
+    // Puxa dados do currículo do localStorage
+    const curriculo = JSON.parse(localStorage.getItem("curriculo")) || {
+        nome: "Não cadastrado",
+        email: "-",
+        telefone: "-",
+        resumo: "-",
+        skills: "-",
+        experiencia: "-",
+        formacao: "-"
+    };
+
+    // Preenche o popup
+    popupNome.textContent = curriculo.nome;
+    popupEmail.textContent = curriculo.email;
+    popupTelefone.textContent = curriculo.telefone;
+    popupResumo.textContent = curriculo.resumo;
+    popupSkills.textContent = curriculo.skills;
+    popupExperiencia.textContent = curriculo.experiencia;
+    popupFormacao.textContent = curriculo.formacao;
+
+    // Mostra o popup
     popupBg.style.display = "flex";
 });
 
-// fechar popup
+// Botão cancelar
 btnCancelar.addEventListener("click", () => {
     popupBg.style.display = "none";
 });
 
-
-// ===============================
-// CONFIRMAR CANDIDATURA
-// ===============================
-btnConfirmarEnvio.addEventListener("click", () => {
-
-    // pegar currículo salvo
-    const curriculo = JSON.parse(localStorage.getItem("curriculo"));
-
-    if (!curriculo) {
-        alert("Você ainda não preencheu o currículo!");
-        return;
-    }
-
-    // pegar candidaturas existentes
-    const candidaturas = JSON.parse(localStorage.getItem("candidaturas")) || [];
-
-    // criar nova candidatura
-    const nova = {
-        vaga: vaga,
-        data: new Date().toLocaleDateString("pt-BR"),
-        status: "Em análise",
-        dadosEnviados: curriculo
-    };
-
-    candidaturas.push(nova);
-
-    // salvar no localStorage
-    localStorage.setItem("candidaturas", JSON.stringify(candidaturas));
-
-    // fechar popup
+// Botão confirmar
+btnConfirmar.addEventListener("click", () => {
+    alert("Candidatura enviada!");
     popupBg.style.display = "none";
-
-    // ir para página de sucesso ou lista
-    window.location.href = "candidaturas.html";
 });

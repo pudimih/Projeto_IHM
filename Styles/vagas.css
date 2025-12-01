@@ -1,99 +1,181 @@
-/* ----- Área principal ----- */
+/* Layout base: garante que o conteúdo não fique atrás do sidebar */
 .content {
-    margin-left: 80px;
-    padding: 30px;
-    transition: 0.3s;
+  padding: 28px;
+  margin-left: 70px; /* sidebar fechada por padrão */
+  transition: margin-left 0.28s ease;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f7f9fc 0%, #f3f6fb 100%);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
+/* quando sidebar abre (sidebar.css usa .sidebar.open) */
 .sidebar.open ~ .content {
-    margin-left: 260px;
+  margin-left: 240px;
+}
+
+/* Header da página */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 20px;
 }
 
 .titulo {
-    font-size: 32px;
-    font-weight: 700;
-    color: #1b263b;
-    margin-bottom: 25px;
+  font-size: 28px;
+  margin: 0;
+  color: #17202a;
 }
 
-/* ----- FILTROS ----- */
-.filtros {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
+/* Filtros / ações */
+.header-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-.filtros select,
-.filtros input {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #d0d0d0;
-    font-size: 15px;
+.header-actions input[type="text"] {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #d7e0ee;
+  background: white;
+  min-width: 260px;
+  box-shadow: 0 2px 6px rgba(16,24,40,0.03);
 }
 
-.filtros input {
-    width: 220px;
+.header-actions select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d7e0ee;
+  background: white;
 }
 
-#btnFiltrar {
-    padding: 10px 20px;
-    background: #1b263b;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+.btn-primary {
+  background: linear-gradient(90deg,#2f6ff9,#1b7bf2);
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(27,123,242,0.18);
 }
 
-#btnFiltrar:hover {
-    background: #31415a;
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #d7e0ee;
+  padding: 9px 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-/* ----- LISTA DE VAGAS ----- */
+/* Grid de cards */
 .lista-vagas {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
 }
 
+/* Card */
 .vaga-card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #dcdcdc;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.06);
-    transition: 0.2s;
+  background: linear-gradient(180deg, #fff 0%, #fbfdff 100%);
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(15,40,80,0.04);
+  box-shadow: 0 8px 20px rgba(12,34,64,0.06);
+  transition: transform .16s ease, box-shadow .16s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .vaga-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.10);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(12,34,64,0.10);
+}
+
+.vaga-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .vaga-titulo {
-    font-size: 20px;
-    font-weight: 700;
-    color: #1b263b;
+  font-weight: 700;
+  color: #0f1724;
+  font-size: 18px;
+  margin: 0;
 }
 
-.vaga-info {
-    margin: 8px 0;
-    color: #4b5563;
-    font-size: 15px;
+.empresa {
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.vaga-desc {
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.35;
+  margin: 6px 0;
+  min-height: 36px;
+}
+
+/* tags e footer do card */
+.vaga-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.tag {
+  background: rgba(27,123,242,0.08);
+  color: #1b7bf2;
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 100px;
+  font-weight: 600;
+}
+
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .btn-ver-mais {
-    margin-top: 10px;
-    display: inline-block;
-    padding: 8px 15px;
-    background: #1b263b;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    text-decoration: none;
+  background: transparent;
+  border: 1px solid #e6eefc;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.btn-ver-mais:hover {
-    background: #31415a;
+/* botão destaque */
+.btn-candidatar-mini {
+  background: linear-gradient(90deg,#2f6ff9,#1b7bf2);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* mensagem vazio */
+.vazio-msg {
+  text-align: center;
+  color: #6b7280;
+  padding: 40px 10px;
+}
+
+/* responsividade */
+@media (max-width: 900px) {
+  .content { padding: 20px; margin-left: 70px; }
+  .header-actions input { min-width: 160px; }
+  .lista-vagas { gap: 14px; }
 }

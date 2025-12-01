@@ -179,3 +179,57 @@ h1 {
 .btn-cancelar {
     background: #ddd;
 }
+
+/* POPUP */
+.popup-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;   /* Inicialmente escondido */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.popup {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    text-align: left;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.popup h2 {
+    margin-top: 0;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-confirmar {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-cancelar {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+

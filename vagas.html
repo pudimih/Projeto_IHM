@@ -1,90 +1,84 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vagas Abertas</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vagas Abertas</title>
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles/navbar.css">
-    <link rel="stylesheet" href="styles/vagas.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/navbar.css" />
+  <link rel="stylesheet" href="styles/vagas.css" />
 </head>
-
 <body>
 
-    <!-- NAVBAR PADRÃO -->
-    <nav class="sidebar" id="sidebar">
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+  <!-- NAVBAR PADRÃO (igual nas outras páginas) -->
+  <nav class="sidebar" id="sidebar">
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fa-solid fa-bars"></i>
+    </div>
 
-        <ul class="menu">
-            <li class="menu-title">
-                <i class="fa-solid fa-briefcase"></i>
-                <span class="text">Mercado de Trabalho</span>
-            </li>
+    <ul class="menu">
+      <li class="menu-title">
+        <i class="fa-solid fa-briefcase"></i>
+        <span class="text">Mercado de Trabalho</span>
+      </li>
 
-            <ul class="sub">
-                <li onclick="go('vagas.html')">
-                    <i class="fa-regular fa-file-lines"></i>
-                    <span class="text">Vagas Abertas</span>
-                </li>
+      <ul class="sub">
+        <li onclick="go('vagas.html')">
+          <i class="fa-regular fa-file-lines"></i>
+          <span class="text">Vagas Abertas</span>
+        </li>
+        <li onclick="go('curriculo.html')">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <span class="text">Meu Currículo</span>
+        </li>
+        <li onclick="go('candidaturas.html')">
+          <i class="fa-solid fa-chart-line"></i>
+          <span class="text">Minhas Candidaturas</span>
+        </li>
+      </ul>
+    </ul>
+  </nav>
 
-                <li onclick="go('curriculo.html')">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <span class="text">Meu Currículo</span>
-                </li>
+  <!-- CONTEÚDO -->
+  <main class="content">
+    <header class="page-header">
+      <h1 class="titulo">Vagas Abertas</h1>
 
-                <li onclick="go('candidaturas.html')">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <span class="text">Minhas Candidaturas</span>
-                </li>
-            </ul>
-        </ul>
-    </nav>
+      <div class="header-actions">
+        <input type="text" id="busca" placeholder="Buscar vaga, empresa ou local..." />
+        <select id="filtro-area">
+          <option value="">Área</option>
+          <option value="TI">TI</option>
+          <option value="ENG">Engenharia</option>
+          <option value="ADM">Administração</option>
+        </select>
+        <select id="filtro-tipo">
+          <option value="">Tipo</option>
+          <option value="Estágio">Estágio</option>
+          <option value="Júnior">Júnior</option>
+          <option value="Pleno">Pleno</option>
+        </select>
+        <button id="btnFiltrar" class="btn-primary"><i class="fa-solid fa-filter"></i> Filtrar</button>
+        <button id="btnLimpar" class="btn-ghost"><i class="fa-solid fa-rotate-left"></i></button>
+      </div>
+    </header>
 
+    <section id="lista-vagas" class="lista-vagas" aria-live="polite">
+      <!-- vagas serão injetadas por JS -->
+    </section>
 
-    <!-- CONTEÚDO DA PÁGINA -->
-    <main class="content">
+    <!-- Mensagem quando não há vagas -->
+    <div id="vazioMsg" class="vazio-msg" hidden>
+      <p>Nenhuma vaga encontrada.</p>
+    </div>
+  </main>
 
-        <h1 class="titulo">Vagas Abertas</h1>
-
-        <!-- FILTROS -->
-        <section class="filtros">
-            <select id="filtro-area">
-                <option value="">Área</option>
-                <option value="TI">Tecnologia</option>
-                <option value="ADM">Administração</option>
-                <option value="ENG">Engenharia</option>
-            </select>
-
-            <select id="filtro-tipo">
-                <option value="">Tipo</option>
-                <option value="Estágio">Estágio</option>
-                <option value="Júnior">Júnior</option>
-            </select>
-
-            <input type="text" id="busca" placeholder="Buscar vaga...">
-
-            <button id="btnFiltrar">
-                <i class="fa-solid fa-filter"></i> Filtrar
-            </button>
-        </section>
-
-
-        <!-- LISTA DE VAGAS -->
-        <section id="lista-vagas" class="lista-vagas">
-            <!-- JS injeta aqui -->
-        </section>
-
-    </main>
-
-    <!-- JS -->
-    <script src="backEnd/navbar.js"></script>
-    <script src="backEnd/vagas.js"></script>
-
+  <!-- JS -->
+  <script src="backEnd/navbar.js"></script>
+  <script src="backEnd/vagas.js"></script>
 </body>
 </html>
