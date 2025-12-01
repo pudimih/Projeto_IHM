@@ -2,9 +2,8 @@ function go(page){
   window.location.href = page;
 }
 
-// exemplo de dados de candidaturas
-// você pode puxar de sessionStorage/localStorage
-let candidaturas = JSON.parse(sessionStorage.getItem("candidaturas")) || [];
+// pega as candidaturas do localStorage
+let candidaturas = JSON.parse(localStorage.getItem("candidaturas")) || [];
 
 // renderiza cards
 function renderCandidaturas() {
@@ -23,10 +22,10 @@ function renderCandidaturas() {
     card.className = "candidatura-card";
     card.innerHTML = `
       <div class="card-header">
-        <h3 class="vaga-titulo">${c.titulo}</h3>
-        <div class="empresa-local">${c.empresa} • ${c.local}</div>
+        <h3 class="vaga-titulo">${c.vagaTitulo}</h3>
+        <div class="empresa-local">${c.empresa}</div>
       </div>
-      <div class="status-label">Status: ${c.status}</div>
+      <div class="status-label">Status: ${c.status || "Pendente"}</div>
       <div class="status-bar">
         <div class="status-fill" style="width:${c.status==='Pendente'?33:c.status==='Em análise'?66:100}%"></div>
       </div>
@@ -37,7 +36,15 @@ function renderCandidaturas() {
 
     // clicar em detalhes abre página da vaga
     card.querySelector(".btn-detalhes").addEventListener("click", () => {
-      sessionStorage.setItem("vagaSelecionada", JSON.stringify(c));
+      sessionStorage.setItem("vagaSelecionada", JSON.stringify({
+        id: c.vagaId,
+        titulo: c.vagaTitulo,
+        empresa: c.empresa,
+        local: c.candidato.local || "",
+        area: c.candidato.area || "",
+        tipo: c.candidato.tipo || "",
+        descricao: c.candidato.descricao || ""
+      }));
       window.location.href = "vagaDetalhe.html";
     });
 

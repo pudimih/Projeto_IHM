@@ -1,65 +1,119 @@
+/* ===== Conteúdo principal ===== */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f5f7fa;
+}
+
+/* Centraliza o conteúdo na tela */
 .content {
-    margin-left: 80px;
-    padding: 40px;
+    display: flex;
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center;     /* centraliza verticalmente */
+    min-height: 100vh;       /* ocupa toda a altura da tela */
+    padding: 20px;
     transition: 0.3s;
 }
 
+/* Título da página */
 .titulo {
     font-size: 32px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     font-weight: 700;
-    color: #333;
+    color: #1f2937; /* cinza escuro moderno */
+    text-align: center;
 }
 
+/* Formulário */
 .curriculo-form {
-    max-width: 700px;
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 720px;
+    background: #ffffff;
+    padding: 35px 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
 }
 
+/* Grupos de input */
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
 }
 
 .form-group label {
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    color: #374151;
+    font-size: 15px;
 }
 
 .form-group input,
 .form-group textarea {
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 12px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
     font-size: 15px;
-    transition: .2s;
+    transition: all 0.2s ease-in-out;
+    background: #f9fafb;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #4a8fff;
-    box-shadow: 0 0 0 2px rgba(74,143,255,0.2);
+    border-color: #4a90ff;
+    box-shadow: 0 0 0 3px rgba(74,144,255,0.2);
+    background: #ffffff;
 }
 
+/* Placeholder mais suave */
+.form-group textarea::placeholder {
+    color: #9ca3af;
+}
+
+/* Botão salvar */
 .btn-salvar {
     width: 100%;
-    padding: 12px;
-    background: #4a8fff;
+    padding: 14px;
+    background: linear-gradient(90deg, #4a90ff, #3b76d9);
     color: white;
     font-size: 16px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    margin-top: 10px;
-    font-weight: bold;
-    transition: .2s;
+    margin-top: 15px;
+    font-weight: 700;
+    transition: all 0.3s ease;
 }
 
 .btn-salvar:hover {
-    background: #3b76d9;
+    background: linear-gradient(90deg, #3b76d9, #3562b5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .content {
+        padding: 20px;
+        align-items: flex-start; /* evita problemas em telas muito pequenas */
+    }
+
+    .curriculo-form {
+        padding: 25px 20px;
+    }
+}
+
+
+/* Ajuste geral para telas pequenas */
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0;       /* remove o espaço lateral da sidebar */
+        padding: 20px;
+        align-items: flex-start;
+        justify-content: center;
+    }
+}
+

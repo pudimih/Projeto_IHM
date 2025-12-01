@@ -63,6 +63,36 @@ btnCancelar.addEventListener("click", () => {
 
 // Botão confirmar
 btnConfirmar.addEventListener("click", () => {
+    const vaga = JSON.parse(sessionStorage.getItem("vagaSelecionada")); // pega a vaga atual
+    const curriculo = JSON.parse(localStorage.getItem("curriculo")) || {};
+
+    if (!vaga) return;
+
+    // Cria objeto da candidatura
+    const candidatura = {
+        vagaId: vaga.id,
+        vagaTitulo: vaga.titulo,
+        empresa: vaga.empresa,
+        data: new Date().toLocaleDateString(),
+        candidato: {
+            nome: curriculo.nome || "-",
+            email: curriculo.email || "-",
+            telefone: curriculo.telefone || "-",
+            resumo: curriculo.resumo || "-",
+            skills: curriculo.skills || "-",
+            experiencia: curriculo.experiencia || "-",
+            formacao: curriculo.formacao || "-"
+        }
+    };
+
+    // Puxa a lista de candidaturas ou cria uma nova
+    const candidaturas = JSON.parse(localStorage.getItem("candidaturas")) || [];
+    candidaturas.push(candidatura);
+
+    // Salva novamente no localStorage
+    localStorage.setItem("candidaturas", JSON.stringify(candidaturas));
+
     alert("Candidatura enviada!");
     popupBg.style.display = "none";
 });
+

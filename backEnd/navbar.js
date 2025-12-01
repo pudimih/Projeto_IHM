@@ -10,3 +10,19 @@ menuToggle.addEventListener("click", () => {
 function go(page) {
     window.location.href = page;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const btnLimparStorage = document.getElementById("btnLimparStorage");
+
+    if(btnLimparStorage){
+        btnLimparStorage.addEventListener("click", () => {
+            if(confirm("Tem certeza que quer limpar o storage?")) {
+                localStorage.clear();
+                sessionStorage.clear();
+                alert("Storage limpo com sucesso!");
+                location.reload();
+            }
+        });
+    }
+});
+
