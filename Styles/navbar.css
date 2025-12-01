@@ -1,0 +1,97 @@
+/* ----------- SIDEBAR ----------- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70px;                /* Sidebar FECHADA */
+    height: 100vh;
+    background: #1b263b;
+    padding: 20px 10px;
+    transition: 0.3s ease;
+    overflow: hidden;
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar.open {
+    width: 240px;               /* Sidebar ABERTA */
+    align-items: flex-start;
+}
+
+/* ----------- BOTÃO BURGER ----------- */
+.menu-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* ----------- MENU LISTA ----------- */
+.menu {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+/* Título da seção */
+.menu-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Submenu (itens) */
+.sub {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.sub li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 10px;
+    margin-top: 5px;
+    color: #e0e8ff;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.sub li i {
+    font-size: 18px;
+}
+
+.sub li:hover {
+    background: #31415a;
+}
+
+/* ----------- TEXTO escondido QUANDO FECHADO ----------- */
+.sidebar:not(.open) .text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.sidebar.open .text {
+    opacity: 1;
+    width: auto;
+}
+
+/* ----------- ESCONDER MENU INTEIRO QUANDO FECHADO ----------- */
+.sidebar:not(.open) .menu,
+.sidebar:not(.open) .menu-title,
+.sidebar:not(.open) .sub {
+    display: none;
+}

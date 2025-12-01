@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título da Página</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/mercado.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR CORRETA -->
+    <nav class="sidebar" id="sidebar">
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="menu">
+            <li class="menu-title">
+                <i class="fa-solid fa-briefcase"></i>
+                <span class="text">Mercado de Trabalho</span>
+            </li>
+
+            <ul class="sub">
+                <li onclick="go('vagas.html')">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <span class="text">Vagas Abertas</span>
+                </li>
+
+                <li onclick="go('curriculo.html')">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span class="text">Meu Currículo</span>
+                </li>
+
+                <li onclick="go('candidaturas.html')">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span class="text">Minhas Candidaturas</span>
+                </li>
+            </ul>
+        </ul>
+    </nav>
+
+    <!-- CONTEÚDO DA PÁGINA -->
+    <main class="content">
+        <h1>Conteúdo da página</h1>
+        <p>Aqui vai o conteúdo dessa tela.</p>
+    </main>
+
+    <!-- JS -->
+    <script src="backEnd/base.js"></script>
+    <script src="backEnd/navbar.js"></script>
+    <script src="backEnd/mercado.js"></script>
+</body>
+</html>

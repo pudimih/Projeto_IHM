@@ -1,0 +1,9 @@
+main {
+    margin-left: 70px;
+    padding: 30px;
+    transition: 0.3s;
+}
+
+.sidebar.open ~ main {
+    margin-left: 240px;
+}

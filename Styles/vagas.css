@@ -1,0 +1,99 @@
+/* ----- Área principal ----- */
+.content {
+    margin-left: 80px;
+    padding: 30px;
+    transition: 0.3s;
+}
+
+.sidebar.open ~ .content {
+    margin-left: 260px;
+}
+
+.titulo {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1b263b;
+    margin-bottom: 25px;
+}
+
+/* ----- FILTROS ----- */
+.filtros {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.filtros select,
+.filtros input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d0d0d0;
+    font-size: 15px;
+}
+
+.filtros input {
+    width: 220px;
+}
+
+#btnFiltrar {
+    padding: 10px 20px;
+    background: #1b263b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#btnFiltrar:hover {
+    background: #31415a;
+}
+
+/* ----- LISTA DE VAGAS ----- */
+.lista-vagas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.vaga-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+    transition: 0.2s;
+}
+
+.vaga-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.10);
+}
+
+.vaga-titulo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1b263b;
+}
+
+.vaga-info {
+    margin: 8px 0;
+    color: #4b5563;
+    font-size: 15px;
+}
+
+.btn-ver-mais {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 8px 15px;
+    background: #1b263b;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.btn-ver-mais:hover {
+    background: #31415a;
+}
