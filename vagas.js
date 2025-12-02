@@ -110,7 +110,7 @@ function filtrar() {
   renderVagas(filtradas);
 }
 
-// ===== Listeners =====
+
 document.addEventListener("DOMContentLoaded", () => {
   renderVagas(vagas);
 
@@ -122,7 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderVagas(vagas);
   });
 
-  // tecla Enter na busca
   document.getElementById("busca").addEventListener("keyup", (e) => {
     if (e.key === "Enter") filtrar();
   });
